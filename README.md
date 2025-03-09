@@ -1,6 +1,6 @@
 # NIX KERNEL(S) (9LEGACY BRANCH)
 
-** This is _not_ a fork of the work presently done by Ron Minnich,
+**This is _not_ a fork of the work presently done by Ron Minnich,
 Paul A. Lalonde and al., and that can be found 
 [NIX master repository] (https://github.com/rminnich/9front) --- the
 default branch should be `nix`.**
@@ -19,8 +19,8 @@ Ron Minnich).
 
 ## Notes For A Quick Start
 
-** We are not here for now. I keep the notes for reference, but since
-this is the first import, do not expect the compilation to work. **
+**We are not here for now. I keep the notes for reference, but since
+this is the first import, do not expect the compilation to work.**
 
 The present Nix incarnation is:
 	- made for objtype=amd64
