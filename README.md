@@ -2,13 +2,17 @@
 
 **This is _not_ a fork of the work presently done by Ron Minnich,
 Paul A. Lalonde and al., and that can be found 
-[NIX master repository] (https://github.com/rminnich/9front) --- the
-default branch should be `nix`.**
+here: [NIX master repository](https://github.com/rminnich/9front) ---
+the default branch there should be `nix`.**
 
 The purpose of the present work is to learn both the Plan9 kernel and
-the NIX project by making it work also with the 9legacy distribution.
-My main purpose (Thierry Laronde aka. TL) is to learn and document
+the NIX project by making it work _also_ with the 9legacy distribution.
+My main purpose (Thierry Laronde aka. TL) is to learn and document,
 before, hopefully, being able to contribute more than superficially.
+ 
+## NIX At A Glimpse
+
+![Nix illustration](https://notes.kergis.com/nix-os/img/nix.jpg)
 
 ## Initial State
 
