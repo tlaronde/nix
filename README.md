@@ -37,7 +37,7 @@ So for example cloning from the master src:
 
 ```
 cd
-git/clone https://github.com/tlaronde/nix
+git/clone ssh://git@github.com/tlaronde/nix
 ```
 
 Once you get the modifications served, the first step is to
