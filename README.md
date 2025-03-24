@@ -37,7 +37,7 @@ So for example cloning from the master src:
 
 ```
 cd
-git/clone ssh://git@github.com/tlaronde/nix
+hget http://downloads.kergis.com/nix/nix-9legacy.tgz | tar xz
 ```
 
 Once you get the modifications served, the first step is to
