@@ -1,19 +1,19 @@
 #!/bin/rc -x
 #
+if (~ $#nixdir 0 || ~ $nixdir '')
+	nixdir=$home/nix
+
 # To run the resulting kernel see the scripts in /bin/nix/
 # (after binding).
 objtype=amd64
 mkdir -p $home/bin/rc/nix
-bind -b $home/nix-os/sys/src/nix/rc $home/bin/rc/nix
+bind -b $nixdir/sys/src/nix/rc $home/bin/rc/nix
 unmount /sys/include >[2]/dev/null
 unmount /sys/src/libc/9syscall >[2]/dev/null
-bind -b $home/nix-os/sys/include /sys/include
-bind -c $home/nix-os/sys/src/libc/9syscall /sys/src/libc/9syscall
-cd $home/nix-os/sys
+bind -b $nixdir/sys/include /sys/include
+bind -c $nixdir/sys/src/libc/9syscall /sys/src/libc/9syscall
+cd $nixdir/sys
 for(d in man/[1-9]){
 	unmount /sys/$d >[2]/dev/null
 	bind -b $d /sys/$d
 }
-# Set up git.
-cd ..
-git/fs

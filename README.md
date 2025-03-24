@@ -30,13 +30,14 @@ The present Nix incarnation is:
 	- made for objtype=amd64
  	- has 2M pages, and supports 1G pages.
 
-We will suppose on the following that you have put the sources
-in $home/nix.
+The script used below uses $nixdir as the dir where the sources are
+kept. It defaults, if unset, to $home/nix. Adjust it if sources are
+put elsewhere.
 
-So for example cloning from the master src:
+So for example cloning from the master src in your home dir:
 
 ```
-cd
+cd # nixdir will default to $home/nix
 hget http://downloads.kergis.com/nix/nix-9legacy.tgz | tar xz
 ```
 
@@ -47,7 +48,7 @@ sys/src/nix/ will take care of that:
 
 ```
 cd nix/sys/src/nix
-nix
+nix # uses nixdir defaulting to $home/nix. Adjust if needed.
 ```
 
 The namespace is now set to allow the compilation and,
