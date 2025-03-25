@@ -10,8 +10,10 @@ if (! test -f $nixdir/sys/src/nix/nix) {
 	exit 'incorrect nixdir'	
 }
 
-# To run the resulting kernel see the scripts in /bin/nix/
-# (after binding).
+# Show what we are doing.
+#
+flag x +
+
 objtype=amd64
 mkdir -p $home/bin/rc/nix
 bind -b $nixdir/sys/src/nix/rc $home/bin/rc/nix
