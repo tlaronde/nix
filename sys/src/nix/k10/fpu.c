@@ -312,8 +312,8 @@ xfpuxf(Ureg* ureg, void*)
 	_stts();
 	up->fpustate = Idle;
 
-	if(ureg->pc & KZERO)
-		panic("#MF: pc=%#p", ureg->pc);
+	if(ureg->ip & KZERO)
+		panic("#MF: pc=%#p", ureg->ip);
 
 	/*
 	 * Notify the user process.
@@ -375,8 +375,8 @@ xfpumf(Ureg* ureg, void*)
 	_stts();
 	up->fpustate = Idle;
 
-	if(ureg->pc & KZERO)
-		panic("#MF: pc=%#p rip=%#p", ureg->pc, fpusave->rip);
+	if(ureg->ip & KZERO)
+		panic("#MF: pc=%#p rip=%#p", ureg->ip, fpusave->rip);
 
 	/*
 	 * Notify the user process.
@@ -419,7 +419,7 @@ xfpunm(Ureg* ureg, void*)
 	 * #NM - Device Not Available (Vector 7).
 	 */
 	if(up == nil)
-		panic("#NM: fpu in kernel: pc %#p\n", ureg->pc);
+		panic("#NM: fpu in kernel: pc %#p\n", ureg->ip);
 
 	/*
 	 * Someone tried to use the FPU in a note handler.
@@ -428,14 +428,14 @@ xfpunm(Ureg* ureg, void*)
 	if(up->fpustate & Hold)
 		return "sys: floating point in note handler";
 
-	if(ureg->pc & KZERO)
+	if(ureg->ip & KZERO)
 		panic("#NM: proc %d %s state %d pc %#p\n",
-			up->pid, up->text, up->fpustate, ureg->pc);
+			up->pid, up->text, up->fpustate, ureg->ip);
 
 	switch(up->fpustate){
 	case Busy:
 	default:
-		panic("#NM: state %d pc %#p\n", up->fpustate, ureg->pc);
+		panic("#NM: state %d pc %#p\n", up->fpustate, ureg->ip);
 		break;
 	case Init:
 		/*

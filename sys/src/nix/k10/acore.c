@@ -135,7 +135,7 @@ actouser(void)
 	acfpusysprocsetup(m->proc);
 
 	u = m->proc->dbgreg;
-	DBG("cpu%d: touser usp = %#p entry %#p\n", m->machno, u->sp, u->pc);
+	DBG("cpu%d: touser usp = %#p entry %#p\n", m->machno, u->sp, u->ip);
 	xactouser(u->sp);
 	panic("actouser");
 }

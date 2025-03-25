@@ -240,7 +240,7 @@ syscall(int badscallnr, Ureg* ureg)
 	up->nsyscall++;
 	up->nqsyscall++;
 	up->insyscall = 1;
-	up->ip = ureg->ip;
+	up->pc = ureg->ip;
 	up->dbgreg = ureg;
 	sp = ureg->sp;
 	startns = 0;
