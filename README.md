@@ -23,8 +23,9 @@ Ron Minnich).
 
 ## Notes For A Quick Start
 
-**We are not here for now. I keep the notes for reference, but since
-this is the first import, do not expect the compilation to work.**
+**The Nix kernel can be compiled. Untested yet and, at least, the
+multiboot stub will have to be updated to accomodate more recent
+multiboot compliant (Grub, qemu?) programs.**
 
 The present Nix incarnation is:
 	- made for objtype=amd64
@@ -58,7 +59,8 @@ accessible as nix/some_script.
 ### COMPILATION OF THE KERNEL
 
 ```
-cd boot
+cd $nixdir/sys/src/nix/boot
+obtype=amd64
 mk
 cd ../k10
 mk ../root/nvram
