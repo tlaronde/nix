@@ -1,0 +1,10 @@
+o Ureg.pc -> Ureg.ip:
+	- sys/src/nix/k10/acore.c
+	- sys/src/nix/k10/fpu.c
+	- sys/src/nix/k10/syscall.c
+	- sys/src/nix/k10/trap.c;
+
+	
+o Macro constant SEGMAXPG suppressed: SEGMAPSIZE only used:
+	- sys/src/nix/mk/parse
+	- sys/src/nix/port/portdat.h;
