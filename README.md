@@ -60,7 +60,7 @@ accessible as nix/some_script.
 
 ```
 cd $nixdir/sys/src/nix/boot
-obtype=amd64
+objtype=amd64
 mk
 cd ../k10
 mk ../root/nvram
