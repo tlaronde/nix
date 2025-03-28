@@ -361,7 +361,7 @@ void		timersinit(void);
 ulong		tk2ms(ulong);
 #define		TK2MS(x) ((x)*(1000/HZ))
 uvlong		tod2fastticks(vlong);
-vlong		todget(vlong*);
+vlong		todget(vlong*, vlong*);
 void		todinit(void);
 void		todset(vlong, vlong, int);
 void		todsetfreq(vlong);

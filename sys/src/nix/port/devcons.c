@@ -1309,19 +1309,20 @@ char *Ebadtimectl = "bad time control";
 static int
 readtime(ulong off, char *buf, int n)
 {
-	vlong nsec, ticks;
+	vlong nsec, ticks, mono;
 	long sec;
 	char str[7*NUMSIZE];
 
-	nsec = todget(&ticks);
+	nsec = todget(&ticks, &mono);
 	if(fasthz == 0LL)
 		fastticks((uvlong*)&fasthz);
 	sec = nsec/1000000000ULL;
-	snprint(str, sizeof(str), "%*lud %*llud %*llud %*llud ",
+	snprint(str, sizeof(str), "%*lud %*llud %*llud %*llud %*llud ",
 		NUMSIZE-1, sec,
 		VLNUMSIZE-1, nsec,
 		VLNUMSIZE-1, ticks,
-		VLNUMSIZE-1, fasthz);
+		VLNUMSIZE-1, fasthz,
+		VLNUMSIZE-1, mono);
 	return readstr(off, buf, n, str);
 }
 
@@ -1348,20 +1349,25 @@ writetime(char *buf, int n)
 }
 
 /*
- *  read binary time info.  all numbers are little endian.
- *  ticks and nsec are syncronized.
+ *  like the old #c/time but with added info.  Return
+ *
+ *	secs	nanosecs	fastticks	fasthz
  */
 static int
 readbintime(char *buf, int n)
 {
 	int i;
-	vlong nsec, ticks;
+	vlong nsec, ticks, mono;
 	uchar *b = (uchar*)buf;
 
 	i = 0;
 	if(fasthz == 0LL)
 		fastticks((uvlong*)&fasthz);
-	nsec = todget(&ticks);
+	nsec = todget(&ticks,&mono);
+	if(n >= 4*sizeof(uvlong)){
+		vlong2le(b+3*sizeof(uvlong), mono);
+		i += sizeof(uvlong);
+	}
 	if(n >= 3*sizeof(uvlong)){
 		vlong2le(b+2*sizeof(uvlong), fasthz);
 		i += sizeof(uvlong);
