@@ -5,6 +5,20 @@ o Ureg.pc -> Ureg.ip:
 	- sys/src/nix/k10/trap.c;
 
 	
-o Macro constant SEGMAXPG suppressed: SEGMAPSIZE only used:
+o Macro constant SEGMAXPG replaced by SEGMAXSIZE, aligned with 9k
+	even if, for now, it is defined equal to SEGMAPSIZE:
+	- sys/src/nix/port/portdat.h
+
+o NSEC (9k) syscall added to Nix, and added Nix syscalls defined
+	as supplementary (after) to keep compatibility with current userland:
+	- sys/src/libc/9syscall/mkfile
+ 	- sys/src/libc/9syscall/sys.h
+ 	- sys/src/nix/k10/syscall.c
 	- sys/src/nix/mk/parse
-	- sys/src/nix/port/portdat.h;
+	- sys/src/nix/port/syscallfmt.c
+	- sys/src/nix/port/sysproc.c;
+	
+o port/tod.c is updated from 9k, with todget() taking a
+	supplementary parameter and providing monotonic time;
+
+o port/portdat.h:Ar0 union: addition of vlong (.vl).
