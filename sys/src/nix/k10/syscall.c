@@ -348,7 +348,7 @@ syscall(int badscallnr, Ureg* ureg)
 		noted(ureg, *(uintptr*)(sp+BY2SE));
 
 	splhi();
-	if(scallnr != RFORK && (up->procctl || up->nnote))
+	if(scallnr != RFORK && scallnr != NSEC && (up->procctl || up->nnote))
 		notify(ureg);
 
 	/* if we delayed sched because we held a lock, sched now */

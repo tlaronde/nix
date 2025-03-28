@@ -1297,3 +1297,9 @@ syssemrelease(Ar0* ar0, va_list list)
 
 	ar0->i = semrelease(s, addr, delta);
 }
+
+void
+sysnsec(Ar0* ar0, va_list)
+{
+	ar0->vl = todget(nil, nil);
+}
