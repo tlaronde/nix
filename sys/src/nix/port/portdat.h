@@ -438,6 +438,9 @@ enum
 #define pagedout(s)	(PTR2UINT(s) == 0 || onswap(s))
 #define swapaddr(s)	(PTR2UINT(s) & ~PG_ONSWAP)
 
+/* XXX 9k defines it differently relative to PTEMAPMEM */
+#define SEGMAXSIZE	(SEGMAPSIZE)
+
 struct Physseg
 {
 	ulong	attr;			/* Segment attributes */

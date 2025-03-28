@@ -45,7 +45,7 @@ BEGIN{
 			s = "LIB=" s;
 		o = o s "\n";
 	}
-	if((!oargc || ("-mkport" in oargv) ) && ("port" in section)){
+	if((!oargc || ("-mkport" in oargv)) && ("port" in section)){
 		s = mkport();
 		if(!("-mkport" in oargv) || (oargc > 1))
 			s = "PORT=" s;
@@ -365,10 +365,10 @@ function mkdevc(		a, d, i, m, n, s, t, u, name, cname){
 	s = s "Physseg physseg[" n+8 "] = {\n";
 	s = s "\t{\t.attr\t= SG_SHARED,\n";
 	s = s "\t\t.name\t= \"shared\",\n";
-	s = s "\t\t.size\t= SEGMAPSIZE,\n\t},\n";
+	s = s "\t\t.size\t= SEGMAXSIZE,\n\t},\n";
 	s = s "\t{\t.attr\t= SG_BSS,\n";
 	s = s "\t\t.name\t= \"memory\",\n";
-	s = s "\t\t.size\t= SEGMAPSIZE,\n\t},\n";
+	s = s "\t\t.size\t= SEGMAXSIZE,\n\t},\n";
 	s = s t "};\nint nphysseg = " n+8 ";\n\n";
 
 	s = s "char dbgflg[256]";
