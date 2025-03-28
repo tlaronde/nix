@@ -262,7 +262,7 @@ syscall(int badscallnr, Ureg* ureg)
 		if(up->syscalltrace)
 			free(up->syscalltrace);
 		up->syscalltrace = nil;
-		startns = todget(nil);		
+		startns = todget(nil, nil);		
 	}
 
 	up->scallnr = scallnr;
@@ -328,7 +328,7 @@ syscall(int badscallnr, Ureg* ureg)
 	ureg->ax = ar0.p;
 
 	if(up->procctl == Proc_tracesyscall){
-		stopns = todget(nil);
+		stopns = todget(nil, nil);
 		up->procctl = Proc_stopme;
 		sysretfmt(scallnr, (va_list)(sp+BY2SE), &ar0, startns, stopns);
 		s = splhi();
